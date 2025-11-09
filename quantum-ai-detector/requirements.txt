@@ -1,6 +1,11 @@
-pennylane==0.38.0
+pennylane==0.43.1
 scikit-learn==1.5.2
 numpy==1.26.4
 matplotlib==3.9.2
 streamlit==1.39.0
 pandas==2.2.3
+streamlit>=1.24.1
+pandas>=2.1.0
+numpy>=1.26.0
+qiskit>=0.46.0
+kagglehub>=0.2.1
