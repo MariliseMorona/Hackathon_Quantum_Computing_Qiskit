@@ -78,6 +78,23 @@ ax2.axis("off")
 ax2.set_title("Qubits codificando pH e Nitrogênio")
 st.pyplot(fig2)
 
+# --- Métricas de Acurácia ---
+st.subheader("Acurácia no Dataset")
+# Clássico: decisão pelo limiar em todo o dataset
+acc_class = float(np.mean(classical_decision(X) == y))
+
+# Quântico 1 qubit: usa fórmula analítica do RY para eficiência
+theta_all = (X[:, 0] - 4) / 4 * np.pi
+prob1_all = np.sin(theta_all / 2) ** 2  # p(Soja)
+pred_q1 = (prob1_all >= 0.5).astype(int)
+acc_q1 = float(np.mean(pred_q1 == y))
+
+col_acc1, col_acc2 = st.columns(2)
+col_acc1.metric("Acurácia Clássico", f"{acc_class*100:.1f}%")
+col_acc2.metric("Acurácia Quântico 1 qubit", f"{acc_q1*100:.1f}%")
+
+st.caption("A acurácia quântica foi calculada analiticamente (sem simulação) para performance.")
+
 # --- Métricas de Tempo ---
 st.subheader("Métricas de Tempo")
 col1, col2, col3 = st.columns(3)
