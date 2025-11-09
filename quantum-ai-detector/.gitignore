@@ -1,0 +1,64 @@
+# =======================================
+# 🧠 Quantum AI Detector - .gitignore
+# =======================================
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Python cache & build
+__pycache__/
+*.py[cod]
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# IDEs e editores
+.vscode/
+.idea/
+*.swp
+*.swo
+*.DS_Store
+
+# Notebooks temporários
+.ipynb_checkpoints/
+
+# Logs & configs locais
+*.log
+*.tmp
+*.out
+*.bak
+
+# Streamlit local cache
+.streamlit/
+
+# Dados temporários e resultados
+data/
+results/
+outputs/
+*.csv
+*.xlsx
+*.npy
+
+# Arquivos de ambiente
+.env
+.env.local
+.env.*
+
+# PyCharm
+*.iml
+*.ipr
+*.iws
+
+# Testes temporários
+coverage/
+htmlcov/
+.pytest_cache/
+
+# macOS metadata
+.DS_Store
