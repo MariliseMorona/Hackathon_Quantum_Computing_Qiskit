@@ -2196,7 +2196,10 @@ files = [
 [package.extras]
 test = ["pytest (>=6.0.0)", "setuptools (>=65)"]
 
+[extras]
+data = ["kagglehub"]
+
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11"
-content-hash = "365bf8713fd3f9342172a89fa3db7817ff5bd038d74691cf163cc77ffe905daa"
+content-hash = "b3c49f3f35540cb7de5c1216ea8195487d0ad1efdc5629b91e5b7ee2c5a0f7ae"

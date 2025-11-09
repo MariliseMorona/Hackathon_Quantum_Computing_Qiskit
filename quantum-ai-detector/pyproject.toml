@@ -11,11 +11,17 @@ readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
     "pennylane (>=0.43.1,<0.44.0)",
+    "pennylane-lightning (>=0.43.0,<0.44.0)",
     "scikit-learn (>=1.7.2,<2.0.0)",
     "numpy (>=2.3.4,<3.0.0)",
     "matplotlib (>=3.10.7,<4.0.0)",
     "pandas (>=2.3.3,<3.0.0)",
     "streamlit (>=1.51.0,<2.0.0)",
+    "kagglehub (>=0.3.13,<0.4.0)"
+]
+
+[project.optional-dependencies]
+data = [
     "kagglehub (>=0.3.13,<0.4.0)"
 ]
 
