@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+import time
 
 # Garantir que src/notebooks esteja no sys.path
 import sys
@@ -33,13 +34,17 @@ st.write(f"Você selecionou a amostra #{sample_idx}: pH={ph_sample:.2f}, Nitrog�
 
 # --- Modelo Clássico ---
 st.subheader("Modelo Clássico (Threshold/Árvore)")
+_t0_class = time.perf_counter()
 prob_classical = classical_probs(X[sample_idx:sample_idx+1])[0]
+_t_class_ms = (time.perf_counter() - _t0_class) * 1000
 st.write(f"Probabilidades de plantio (Milho | Soja): {prob_classical}")
 st.bar_chart(prob_classical)
 
 # --- Modelo Quântico 1 qubit ---
 st.subheader("Modelo Quântico (1 qubit - pH)")
+_t0_q1 = time.perf_counter()
 prob_q1, qc1 = plant_choice_qiskit(ph_sample)
+_t_q1_ms = (time.perf_counter() - _t0_q1) * 1000
 st.write(f"Probabilidades (Milho | Soja): {prob_q1}")
 st.text(qc1.draw())
 
@@ -55,7 +60,9 @@ st.pyplot(fig)
 
 # --- Modelo Quântico 2 qubits ---
 st.subheader("Modelo Quântico (2 qubits - pH + Nitrogênio)")
+_t0_q2 = time.perf_counter()
 probs_2q, qc2 = plant_choice_2qubits(ph_sample, N_sample)
+_t_q2_ms = (time.perf_counter() - _t0_q2) * 1000
 st.write("Probabilidades de cada estado (00,01,10,11):", probs_2q)
 st.text(qc2.draw())
 
@@ -70,3 +77,10 @@ ax2.set_xlim(0,1); ax2.set_ylim(-0.5,1.5)
 ax2.axis("off")
 ax2.set_title("Qubits codificando pH e Nitrogênio")
 st.pyplot(fig2)
+
+# --- Métricas de Tempo ---
+st.subheader("Métricas de Tempo")
+col1, col2, col3 = st.columns(3)
+col1.metric("Clássico", f"{_t_class_ms:.2f} ms")
+col2.metric("Quântico 1 qubit", f"{_t_q1_ms:.2f} ms")
+col3.metric("Quântico 2 qubits", f"{_t_q2_ms:.2f} ms")
