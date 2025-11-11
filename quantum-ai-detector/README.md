@@ -4,7 +4,7 @@ Comparação simples entre modelos clássicos e quânticos para decidir plantio 
 
 ## Visão Geral
 
-- Objetivo: ilustrar como um circuito quântico de 1 qubit pode mapear uma entrada real (pH) para probabilidades de decisão de plantio, comparando com um modelo clássico de limiar.
+- Objetivo: ilustrar como um circuito quântico de 1 qubit e 2 qubits pode mapear uma entrada real (pH e N) para probabilidades de decisão de plantio, comparando com um modelo clássico de limiar.
 - Componentes principais:
   - `dashboards/streamlit_app.py`: interface interativa para explorar amostras e visualizar probabilidades e circuito.
   - `src/notebooks/dataset_loader.py`: carrega dataset (Kaggle ou sintético) e retorna `X`, `y`, `df`.
